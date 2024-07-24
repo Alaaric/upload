@@ -19,6 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo($errors[1]);
     }
     move_uploaded_file($_FILES['avatar']["tmp_name"], uploadFile);
+    function delete($file)
+    {
+        if (file_exists($file)) {
+            unlink($file);
+        }
+    }
 
 }
 ?>
@@ -42,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <label for="age">your age</label>
     <input type="number" name="age" id="age">
     <button name="send">Send</button>
+    <button>delete</button>
 </form>
 
 <img src="<?= uploadFile ?>" alt="homer img">
